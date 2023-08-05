@@ -1,0 +1,105 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	
+<style>
+
+</style>	
+</head>
+
+<body>
+    <button id="btnAdd">Add New Contact</button><br><br>
+	<input id="myInput" type="text" placeholder="Search.."><br><br>
+    <table id="tblData">          
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>Email</th>
+				<th>Edit/Save</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+	
+    <script type="text/javascript" src="jquery-3.4.1.min.js"></script>
+	
+<script>
+
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#tblData tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+
+function Add(){
+    $("#tblData tbody").append(
+        "<tr>"+
+        "<td><input type='text'/></td>"+
+        "<td><input type='text'/></td>"+
+        "<td><input type='text'/></td>"+
+        "<td><img src='img/disk.jpg' class='btnSave' width='24' height='24'/></td>"+
+		"<td><img src='img/delete.jpg' class='btnDelete' width='22' height='22'/></td>"+
+        "</tr>");
+		
+        $(".btnSave").bind("click", Save);      
+        $(".btnDelete").bind("click", Delete);
+}; 
+
+function Save(){
+    var par = $(this).parent().parent(); //tr
+    var tdName = par.children("td:nth-child(1)");
+    var tdPhone = par.children("td:nth-child(2)");
+    var tdEmail = par.children("td:nth-child(3)");
+    var tdEditSave = par.children("td:nth-child(4)");
+	var tdDelete = par.children("td:nth-child(5)");
+ 
+    tdName.html(tdName.children("input[type=text]").val());
+    tdPhone.html(tdPhone.children("input[type=text]").val());
+    tdEmail.html(tdEmail.children("input[type=text]").val());
+    tdEditSave.html("<img src='img/pencil.jpg' class='btnEdit' width='20' height='20'/>");
+	tdDelete.html("<img src='img/delete.jpg' class='btnDelete' width='22' height='22'/>");
+ 
+    $(".btnEdit").bind("click", Edit);
+    $(".btnDelete").bind("click", Delete);
+}; 
+
+function Edit(){
+    var par = $(this).parent().parent(); //tr
+    var tdName = par.children("td:nth-child(1)");
+    var tdPhone = par.children("td:nth-child(2)");
+    var tdEmail = par.children("td:nth-child(3)");
+    var tdEditSave = par.children("td:nth-child(4)");
+	var tdDelete = par.children("td:nth-child(5)");
+ 
+    tdName.html("<input type='text' id='txtName' value='"+tdName.html()+"'/>");
+    tdPhone.html("<input type='text' id='txtPhone' value='"+tdPhone.html()+"'/>");
+    tdEmail.html("<input type='text' id='txtEmail' value='"+tdEmail.html()+"'/>");
+    tdEditSave.html("<img src='img/disk.jpg' class='btnSave' width='24' height='24'/>");
+ 
+    $(".btnSave").bind("click", Save);
+    $(".btnEdit").bind("click", Edit);
+    $(".btnDelete").bind("click", Delete);
+};
+
+function Delete(){
+    var par = $(this).parent().parent(); //tr
+    par.remove();
+}; 
+
+$(function(){
+    //Add, Save, Edit and Delete functions code
+    $(".btnEdit").bind("click", Edit);
+    $(".btnDelete").bind("click", Delete);
+    $("#btnAdd").bind("click", Add);
+});
+
+</script>
+	
+</body>
+</html>
