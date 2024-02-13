@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Dictionary</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+  
+  </head>
+
+<body>
+
+<script>
+function T4() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+	var word=JSON.parse(this.responseText);
+	document.getElementById("result4").innerHTML = "";
+	
+	if (word[0] == null) {
+		document.getElementById("result4").innerHTML = "<b>Sözcük bulunamadı</b>";
+	}
+	else {
+		document.getElementById("result4").innerHTML += "<b>Sözcük bulundu ve silindi</b>";
+	}	
+	document.getElementById("inp4").value = "";	
+    }
+  };
+  var w=document.getElementById("inp4").value;
+  xhttp.open("GET", "/deltrword?w="+w, true);
+  xhttp.send();
+}
+</script>
+
+<div class="container-fluid">
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav">
+      <li><a href="/index.html">English To Turkish</a></li>
+      <li><a href="/indexx.html">Turkish To English</a></li>
+      <li><a href="/newen.html">New English Word</a></li>
+	  <li><a href="/newtr.html">New Turkish Word</a></li>
+      <li><a href="/delen.html">Delete English Word</a></li>
+	  <li class="active"><a href="/deltr.html">Delete Turkish Word</a></li>
+    </ul>
+  </div>
+</nav>
+
+  <div class="row" style="width:100%">
+    <div class="col-12" >
+       <div class="text-center">
+       <h1>Sözcük Silme</h1></div>
+	</div>
+   </div>
+     <div class="row" style="width:100%">
+    <div class="col-12" >
+       <div class="text-center">
+       <input type="text" id="inp4" style="width:200px" />
+	   <button onclick="T4()" > Sil </button>
+	   </div>
+   </div>
+    <div class="row" style="width:100%">
+    <div class="col-12 " >
+       <h1 class="text-center " id="result4">
+	   </h1>
+   </div>
+</div>
+
+</body>
+</html>

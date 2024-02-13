@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Dictionary</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+  
+  </head>
+
+<body>
+
+<div class="container-fluid">
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav">
+      <li><a href="/index.html">English To Turkish</a></li>
+      <li><a href="/indexx.html">Turkish To English</a></li>
+      <li><a href="/newen.html">New English Word</a></li>
+	  <li class="active"><a href="/newtr.html">New Turkish Word</a></li>
+      <li><a href="/delen.html">Delete English Word</a></li>
+	  <li><a href="/deltr.html">Delete Turkish Word</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container-fluid;">
+<div id="loginbox" style="width:300px;  ">
+<div class="login-form">
+    <form action="/addnewtrword" method="get">
+        <h2 class="text-center">New Turkish Word</h2>       
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="turkish" name="turkish" required="required">
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="english" name="english" required="required">
+        </div>
+		<div class="form-group">
+            <input type="text" class="form-control" placeholder="example" name="example" required="required">
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-block">Add New Word</button>
+        </div>
+    </form>
+</div>
+</div>
+
+</div>
+
+</body>
+</html>
