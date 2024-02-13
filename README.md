@@ -1,1 +1,1 @@
-# Basic WEB Projects
+# Mini WEB Projects
